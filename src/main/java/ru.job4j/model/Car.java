@@ -13,6 +13,7 @@ public class Car {
     private int id;
     private String description;
     private boolean status;
+    private boolean photoStatus;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
@@ -36,7 +37,7 @@ public class Car {
         this.body = body;
         this.created = new Date(System.currentTimeMillis());
         this.status = false;
-
+        this.photoStatus = false;
     }
 
     public Car() {
@@ -98,4 +99,11 @@ public class Car {
         this.body = body;
     }
 
+    public boolean getPhotoStatus() {
+        return photoStatus;
+    }
+
+    public void setPhotoStatus(boolean photoStatus) {
+        this.photoStatus = photoStatus;
+    }
 }
