@@ -25,3 +25,20 @@ create table users
     email text,
     password text
 );
+
+insert into car_mark(name) values ('Toyota');
+insert into car_mark(name) values ('BMW');
+insert into car_mark(name) values ('Audi');
+insert into car_mark(name) values ('Volkswagen');
+insert into car_mark(name) values ('Scoda');
+insert into car_mark(name) values ('Volkswagen');
+insert into car_mark(name) values ('Porsche');
+insert into car_mark(name) values ('Mercedes-Benz');
+
+insert into car_body(name) values ('Седан');
+insert into car_body(name) values ('Хетчбек');
+insert into car_body(name) values ('Кросовер');
+insert into car_body(name) values ('Универсал');
+insert into car_body(name) values ('Минивэн');
+insert into car_body(name) values ('Пикап');
+insert into car_body(name) values ('Другое');
