@@ -30,18 +30,18 @@
 </head>
 <body>
 <%
-    List<User> usersList = (List<User>) request.getSession().getAttribute("user");
+    User user = (User) request.getSession().getAttribute("user");
 %>
 <div class="container">
     <div class="row">
         <ul class="nav">
-            <% if (usersList == null) { %>
+            <% if (user == null) { %>
             <li class="nav-item">
                 <a class="nav-link" href="<%=request.getContextPath()%>/login.do">Войти</a>
             </li>
             <% } else { %>
             <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/login.do"><%=usersList.get(0).getName()%> | Выйти</a>
+                <a class="nav-link" href="<%=request.getContextPath()%>/login.do"><%=user.getName()%> | Выйти</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<%=request.getContextPath()%>/newPost.jsp">Добавить объявление</a>

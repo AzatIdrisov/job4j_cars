@@ -21,8 +21,7 @@ public class PostServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        List<User> usersList = (List<User>) req.getSession().getAttribute("user");
-        User currentUser = usersList.get(0);
+        User currentUser = (User) req.getSession().getAttribute("user");
         JSONObject obj = new JSONObject();
         List<Car> allCars = AdRepostiroty.instOf().getAllCars();
         JSONArray cars = new JSONArray();
@@ -50,8 +49,7 @@ public class PostServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws IOException {
         req.setCharacterEncoding("utf-8");
-        List<User> usersList = (List<User>) req.getSession().getAttribute("user");
-        User user = usersList.get(0);
+        User user = (User) req.getSession().getAttribute("user");
         CarMark carMark = AdRepostiroty.instOf().findMarkByName(req.getParameter("car_mark"));
         CarBody carBody = AdRepostiroty.instOf().findBodyByName(req.getParameter("car_body"));
         AdRepostiroty.instOf().saveCarAd(

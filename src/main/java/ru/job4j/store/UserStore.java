@@ -1,5 +1,6 @@
 package ru.job4j.store;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -8,8 +9,8 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import ru.job4j.model.User;
 
-import javax.persistence.Query;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class UserStore {
@@ -52,6 +53,16 @@ public class UserStore {
         return this.tx(
                 session -> session.get(User.class, id)
         );
+    }
+
+    public Optional<User> findUserByEmailAndPassword(String email, String password) {
+        return this.tx(session -> {
+            final Query query = session.createQuery("from User where email=:email and password=:password");
+            query.setParameter("email", email);
+            query.setParameter("password", password);
+            User result = (User) query.uniqueResult();
+            return Optional.ofNullable(result);
+        });
     }
 
     public List<User> findUserByEmail(String email) {

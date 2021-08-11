@@ -27,7 +27,7 @@ public class UploadServlet extends HttpServlet {
         ServletFileUpload upload = new ServletFileUpload(factory);
         try {
             List<FileItem> items = upload.parseRequest(req);
-            File folder = new File("c:\\images\\");
+            File folder = new File("/images" + File.separator);
             if (!folder.exists()) {
                 folder.mkdir();
             }
